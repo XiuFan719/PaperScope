@@ -1,0 +1,16 @@
+# paperscope tunable thresholds.
+#
+# The detector LOGIC is open-source (in src/). THESE NUMBERS are the part you
+# keep private / rotate periodically, so fraudsters can't tune a fabrication to
+# sit just under a known threshold. Ship a public default copy; keep your real
+# one out of the repo (e.g. via $PAPERSCOPE_RULES pointing elsewhere).
+
+numeric_consistency:
+  tol: 0.02                 # |a-b| above this = a real conflict, not rounding
+  repeat_threshold: 4       # one value across >= N keys -> possible copy-paste
+
+statistical_anomaly:
+  constant_diff_min_len: 4      # >= N points forming an exact arithmetic run
+  terminal_digit_min_sample: 12 # need >= N decimals before judging digit spread
+  terminal_digit_max_share: 0.6 # one last-digit owning > this share -> flag
+  precision_extra_places: 3     # a value with >= this many more decimals -> flag

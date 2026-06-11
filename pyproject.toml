@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paperscope"
+version = "0.1.0"
+description = "Academic-integrity screening core — two-axis, verdict vs flag"
+requires-python = ">=3.10"
+dependencies = ["scipy>=1.10", "pyyaml>=6", "mcp>=1.0"]
+
+
+[project.scripts]
+paperscope-mcp = "paperscope.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+paperscope = ["rules.yaml"]
